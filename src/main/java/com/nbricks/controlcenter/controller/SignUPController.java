@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @AllArgsConstructor
 public class SignUPController {
@@ -18,7 +20,7 @@ public class SignUPController {
 
     @PostMapping("/signup")
     @CrossOrigin(origins = "*")
-    ResponseEntity<SignUpResponse> signup(@RequestBody SignUpRequest signUpRequest) {
+    ResponseEntity<SignUpResponse> signup(@RequestBody @Valid SignUpRequest signUpRequest) {
         UserInfo userInfo = userService.save(signUpRequest);
         return ResponseEntity
                 .status(201)

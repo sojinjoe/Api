@@ -28,6 +28,8 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.springframework.boot:spring-boot-starter-security:2.7.4'
     implementation 'org.springframework.boot:spring-boot-starter-actuator:2.7.4'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 }
 
 tasks.named('test') {

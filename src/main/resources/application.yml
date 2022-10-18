@@ -1,0 +1,52 @@
+spring:
+  jpa:
+    hibernate.ddl-auto: update
+    show-sql: true
+    properties.hibernate:
+      format_sql: false
+      dialect: org.hibernate.dialect.PostgreSQL81Dialect
+  datasource:
+    url: jdbc:postgresql://35.223.163.182:5432/nbricks
+    username: rishabh
+    password: xxx
+
+error.responses:
+  method-argument-failed:
+    errorCode: "4001"
+    errorMessage: "%s"
+    httpStatus: 400
+  duplicate-userID:
+    errorCode: "4002"
+    errorMessage: "%s is a duplicate user."
+    httpStatus: 400
+  server-exception:
+    error-code: "5001"
+    error-message: "Something went wrong."
+    http-status: 500
+
+bff.dropdown:
+  signup:
+    countries:
+      - AUS: Australia
+      - CA: Canada
+      - ENG: England
+      - IN: India
+      - MX: Mexico
+      - UK: United Kingdom
+      - US: United States of America
+    hintQuestions:
+      - QU1: What is your secret code?
+      - QU2: What is your secret pin?
+    userClassification:
+      - BUS: Business
+      - IND: Individual
+    role:
+      - AGT: Agent
+      - BRO: Broker
+      - CONT: Contractor
+      - MFG: Manufacturer
+      - PRODUCER: Producer
+      - PROVIDER: Provider
+      - RETAILER: Retailer
+      - SPEC: Specifier
+      - SUPP: Supplier

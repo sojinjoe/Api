@@ -2,6 +2,7 @@ package com.nbricks.controlcenter.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nbricks.controlcenter.entity.UserInfo;
+import com.nbricks.controlcenter.exception.DuplicateUserIdException;
 import com.nbricks.controlcenter.models.SignUpRequest;
 import com.nbricks.controlcenter.repo.UserRepository;
 import com.nbricks.controlcenter.service.UserService;
@@ -17,14 +18,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserInfo save(SignUpRequest signUpRequest) {
-        UserInfo userInfo = createUserEntity(signUpRequest);
+        UserInfo userInfo = createUserInfo(signUpRequest);
         userInfo.setPassword(passwordEncoder.encode(userInfo.getPassword()));
+
+        if (userRepository.existsById(userInfo.getId())) {
+            throw new DuplicateUserIdException("Signup failed for duplicate userID", userInfo.getId());
+        }
+
         userRepository.save(userInfo);
 
         return userInfo;
     }
 
-    private UserInfo createUserEntity(SignUpRequest signUpRequest) {
+    private UserInfo createUserInfo(SignUpRequest signUpRequest) {
         return new ObjectMapper().convertValue(signUpRequest, UserInfo.class);
     }
 }
