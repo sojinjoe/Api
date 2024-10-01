@@ -2,6 +2,7 @@
 build/*
 !build/libs/
 !build/libs/*.jar
+build/libs
 
 # Ignore Git files
 .git/
