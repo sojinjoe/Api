@@ -2,7 +2,7 @@
 build/*
 !build/libs/
 !build/libs/*.jar
-build/libs
+/build/libs/control-center-0.0.1-SNAPSHOT.jar /app.jar
 
 # Ignore Git files
 .git/
