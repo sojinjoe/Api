@@ -1,18 +1,18 @@
-# Ignore build directory
-build/
+# Ignore all files in build directory except JARs
+build/*
+!build/libs/
+!build/libs/*.jar
 
-# Ignore IDE and editor files
-.idea/
-.vscode/
-*.iml
-
-# Ignore log files
-*.log
-
-# Ignore temporary files
-tmp/
-.tmp/
-
-# Ignore version control directories
+# Ignore Git files
 .git/
-.svn/
+.gitignore
+
+# Ignore IDE/editor-specific files
+*.swp
+*.idea/
+*.vscode/
+
+# Ignore logs, temp files, and environment files
+*.log
+*.tmp
+.env
